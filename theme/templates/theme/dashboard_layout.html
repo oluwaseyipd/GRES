@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet" />
+    <title>
+      {% block title %}GRES | Dashboard{% endblock %}
+    </title>
+  </head>
+  <body>
+<div class="bg-gray-50 min-h-screen">
+    <!-- Sidebar -->
+    <aside class="fixed top-0 left-0 w-[300px] h-screen flex flex-col justify-between shadow-sm p-4 bg-white z-30">
+        <!-- Logo -->
+        <h2 class="text-blue-500 text-3xl font-bold">GRES</h2>
+
+        <!-- Navigation -->
+
+        <ul class="flex flex-col gap-2 mt-8">
+            {% if user.is_authenticated %}
+                {% if user.profile.role == 'admin' %}
+                    <li>
+                        <a href="{% url 'admin_dashboard' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-tachometer-alt w-5 text-blue-400"></i>
+                            <span class="text-lg">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-users-cog w-5 text-blue-400"></i>
+                            <span class="text-lg">Manage Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-book-open w-5 text-blue-400"></i>
+                            <span class="text-lg">Manage Subjects/ Classes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-chart-bar w-5 text-blue-400"></i>
+                            <span class="text-lg">Results Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-user-shield w-5 text-blue-400"></i>
+                            <span class="text-lg">System Permissions</span>
+                        </a>
+                    </li>
+                {% elif user.profile.role == 'teacher' %}
+                    <li>
+                        <a href="{% url 'teacher_dashboard' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-tachometer-alt w-5 text-blue-400"></i>
+                            <span class="text-lg">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teacher_manage_students' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-user-graduate w-5 text-blue-400"></i>
+                            <span class="text-lg">Manage Students</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teacher_manage_subjects' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-book w-5 text-blue-400"></i>
+                            <span class="text-lg">Manage Subjects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teacher_result_board' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-clipboard-list w-5 text-blue-400"></i>
+                            <span class="text-lg">Result Board</span>
+                        </a>
+                    </li>
+                {% elif user.profile.role == 'student' %}
+                    <li>
+                        <a href="{% url 'student_dashboard' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-tachometer-alt w-5 text-blue-400"></i>
+                            <span class="text-lg">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'student_subjects' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-book w-5 text-blue-400"></i>
+                            <span class="text-lg">Subjects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'student_result_board' %}" class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+                            <i class="fas fa-clipboard-list w-5 text-blue-400"></i>
+                            <span class="text-lg">Result Board</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+
+        <!-- Logout -->
+       <a href="#" 
+   onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+   class="flex items-center gap-3 py-2 px-4 hover:bg-blue-50 hover:ml-2 text-gray-800 hover:text-blue-600 font-medium transition-all duration-300 rounded-lg">
+     <i class="fa-solid fa-arrow-right-from-bracket w-5 text-blue-400"></i>
+    <span class="text-lg">Logout</span>
+</a>
+
+<form id="logout-form" action="{% url 'logout' %}" method="post" class="hidden">
+    {% csrf_token %}
+</form>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="flex flex-col min-h-screen ml-[300px]">
+        <!-- Header -->
+        <header class="fixed top-0 left-[300px] right-0 h-16 shadow-sm p-4 bg-white flex justify-end items-center z-20">
+            <a href="{% url 'profile' %}" class="w-10 h-10 rounded-full border border-blue-300 overflow-hidden">
+                <img src="{{ user.profile.profile_image.url }}" alt="Profile" class="w-full h-full object-cover">
+            </a>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 p-6 pt-20 pb-20">  {# pt-20 for header, pb-20 for footer #}
+            {% block content %}
+            <!-- Page content -->
+            {% endblock %}
+        </div>
+
+        <!-- Footer -->
+        <footer class="fixed left-[300px] right-0 bottom-0 p-4 bg-white shadow-sm text-center z-20">
+            <p class="text-gray-700 text-sm">Powered by GRES | © 2025 All rights reserved</p>
+        </footer>
+    </main>
+</div>
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+  </body>
+</html>

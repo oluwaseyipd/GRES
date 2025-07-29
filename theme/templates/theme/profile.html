@@ -1,0 +1,81 @@
+{% extends "theme/dashboard_layout.html" %}
+{% load static %}
+
+{% block title %}GRES | Profile{% endblock %}
+
+{% block content %}
+<div class="mx-auto p-6 my-8 bg-white shadow-sm rounded-xl">
+    <!-- Banner -->
+    <div class="relative">
+        <div class="h-48 md:h-60 w-full overflow-hidden rounded-t-xl">
+            <img src="{{ user.profile.banner_image.url }}" alt="banner-pic" class="w-full h-full object-cover">
+        </div>
+        <!-- Profile image -->
+        <div class="absolute -bottom-16 left-6 md:left-10 w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-white overflow-hidden shadow-md">
+            <img src="{{ user.profile.profile_image.url }}" alt="profile-pic" class="w-full h-full object-cover">
+        </div>
+    </div>
+
+    <!-- User Info -->
+    <div class="mt-20 flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div>
+            <h2 class="text-2xl font-semibold">{{ user.get_full_name|default:user.username }}</h2>
+            <p class="text-gray-600"><span>SSS1</span> | <span>2nd Term</span></p>
+            <p class="text-gray-600">
+                <span>(234) 8075039814</span> | <span>{{ user.email }}</span>
+            </p>
+            <p class="text-gray-600">Under G, Ogbomoso, Nigeria.</p>
+            <p class="text-blue-500 text-sm">Joined October 2025</p>
+        </div>
+
+        <!-- Edit Button -->
+        <button type="button" id="showProfileFormBtn"
+           class="mt-4 md:mt-0 bg-blue-600 hover:bg-transparent border border-blue-600 py-2 px-5 text-white hover:text-blue-600 rounded-full transition-all duration-300">
+            Edit Profile
+        </button>
+    </div>
+
+    <!-- Update Form -->
+    <div id="profileUpdateForm" class="mt-8 p-6 bg-gray-50 rounded-lg shadow-sm max-h-0 overflow-hidden opacity-0 transition-all duration-500">
+        <form method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
+            {% csrf_token %}
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+
+            <div class="flex gap-5">
+                  <button id="hideProfileFormBtn" type="button"
+                class="w-full md:w-1/3 mx-auto bg-red-500 hover:bg-red-600 transition duration-300 cursor-pointer text-white mt-3 py-3 rounded-lg shadow-md">
+                Cancel
+            </button>
+
+                  <button type="submit"
+                class="w-full md:w-1/3 mx-auto bg-blue-600 hover:bg-blue-700 transition duration-300 cursor-pointer text-white mt-3 py-3 rounded-lg shadow-md">
+                Update
+            </button>
+            </div>
+          
+        </form>
+    </div>
+</div>
+<script>
+  const showBtn = document.getElementById('showProfileFormBtn');
+  const hideBtn = document.getElementById('hideProfileFormBtn');
+  const formDiv = document.getElementById('profileUpdateForm');
+  let formVisible = false;
+  showBtn.addEventListener('click', function() {
+    if (!formVisible) {
+      formDiv.classList.remove('max-h-0', 'opacity-0');
+      formDiv.classList.add('max-h-[2000px]', 'opacity-100');
+      formVisible = true;
+    }
+  });
+
+    hideBtn.addEventListener('click', function() {
+        if (formVisible) {
+        formDiv.classList.add('max-h-0', 'opacity-0');
+        formDiv.classList.remove('max-h-[2000px]', 'opacity-100');
+        formVisible = false;
+        }
+    });
+</script>
+{% endblock %}

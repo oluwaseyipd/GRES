@@ -1,0 +1,460 @@
+{% extends "theme/dashboard_layout.html" %}
+{% load static %}
+
+{% block title %}GRES | Profile{% endblock %}
+
+{% block content %}
+
+ <div class="bg-gradient-to-r from-blue-500 to-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-white">Manage Subjects</h1>
+                    <p class="text-blue-100 mt-2">Manage your subjects, students, and resources</p>
+                </div>
+                <div class="flex items-center text-white">
+                    <i class="fas fa-book text-2xl mr-3"></i>
+                    <div class="text-right">
+                        <p class="text-sm text-blue-100">Total Subjects</p>
+                        <p class="text-2xl font-bold">3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Subjects Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Mathematics Subject Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Mathematics</h3>
+                            <p class="text-blue-100 text-sm">MATH101</p>
+                        </div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-calculator text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Classes -->
+                    <div class="mb-4">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Associated Classes</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">10A</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">10B</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">11A</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">45</p>
+                            <p class="text-xs text-gray-500">Students</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">8</p>
+                            <p class="text-xs text-gray-500">Resources</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button onclick="openStudentManagement('Mathematics')" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-users"></i>
+                            <span>Manage Students</span>
+                        </button>
+                        <button onclick="openResourceManager('Mathematics')" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Resources</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics Subject Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Physics</h3>
+                            <p class="text-green-100 text-sm">PHY201</p>
+                        </div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-atom text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Classes -->
+                    <div class="mb-4">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Associated Classes</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">11A</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">12A</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">32</p>
+                            <p class="text-xs text-gray-500">Students</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">12</p>
+                            <p class="text-xs text-gray-500">Resources</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button onclick="openStudentManagement('Physics')" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-users"></i>
+                            <span>Manage Students</span>
+                        </button>
+                        <button onclick="openResourceManager('Physics')" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Resources</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry Subject Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Chemistry</h3>
+                            <p class="text-purple-100 text-sm">CHEM301</p>
+                        </div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-flask text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Classes -->
+                    <div class="mb-4">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Associated Classes</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">11B</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">12A</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">28</p>
+                            <p class="text-xs text-gray-500">Students</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <p class="text-lg font-semibold text-gray-900">5</p>
+                            <p class="text-xs text-gray-500">Resources</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button onclick="openStudentManagement('Chemistry')" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-users"></i>
+                            <span>Manage Students</span>
+                        </button>
+                        <button onclick="openResourceManager('Chemistry')" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload Resources</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Management Modal -->
+    <div id="studentManagementModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-10 mx-auto p-5 border w-11/12 md:w-4/5 lg:w-3/4 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Manage Students - <span id="subjectNameStudents">Mathematics</span></h3>
+                    <button onclick="closeStudentManagement()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="py-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Enrolled Students -->
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-md font-medium text-gray-900">Enrolled Students (45)</h4>
+                                <button class="text-red-600 hover:text-red-700 text-sm">
+                                    <i class="fas fa-download mr-1"></i>Export List
+                                </button>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg max-h-80 overflow-y-auto">
+                                <div class="divide-y divide-gray-200">
+                                    <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/3B82F6/FFFFFF?text=AS" alt="">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Alice Smith</p>
+                                                <p class="text-xs text-gray-500">10A - STU001</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-red-600 hover:text-red-700 text-sm">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/10B981/FFFFFF?text=BJ" alt="">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Bob Johnson</p>
+                                                <p class="text-xs text-gray-500">10A - STU002</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-red-600 hover:text-red-700 text-sm">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/F59E0B/FFFFFF?text=CW" alt="">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Carol White</p>
+                                                <p class="text-xs text-gray-500">10B - STU003</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-red-600 hover:text-red-700 text-sm">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Available Students -->
+                        <div>
+                            <div class="mb-4">
+                                <h4 class="text-md font-medium text-gray-900 mb-2">Add Students</h4>
+                                <div class="relative">
+                                    <input type="text" placeholder="Search students..." class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-search text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg max-h-80 overflow-y-auto">
+                                <div class="divide-y divide-gray-200">
+                                    <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/8B5CF6/FFFFFF?text=DM" alt="">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">David Miller</p>
+                                                <p class="text-xs text-gray-500">11A - STU004</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-green-600 hover:text-green-700 text-sm">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/EF4444/FFFFFF?text=ED" alt="">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Emma Davis</p>
+                                                <p class="text-xs text-gray-500">11A - STU005</p>
+                                            </div>
+                                        </div>
+                                        <button class="text-green-600 hover:text-green-700 text-sm">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex justify-end pt-4 border-t border-gray-200">
+                    <button onclick="closeStudentManagement()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 mr-2">Close</button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Manager Modal -->
+    <div id="resourceManagerModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-10 mx-auto p-5 border w-11/12 md:w-4/5 lg:w-3/4 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Manage Resources - <span id="subjectNameResources">Mathematics</span></h3>
+                    <button onclick="closeResourceManager()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="py-6">
+                    <!-- Upload Section -->
+                    <div class="mb-6">
+                        <h4 class="text-md font-medium text-gray-900 mb-4">Upload New Resource</h4>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                            <div class="space-y-4">
+                                <div class="flex justify-center">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-lg font-medium text-gray-900">Drop files to upload</p>
+                                    <p class="text-sm text-gray-500">or click to browse</p>
+                                </div>
+                                <input type="file" multiple class="hidden" id="fileUpload">
+                                <button onclick="document.getElementById('fileUpload').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                                    Choose Files
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Resource Type Selection -->
+                        <div class="mt-4 grid grid-cols-3 gap-4">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="resourceType" value="notes" class="text-blue-600">
+                                <span class="text-sm">Notes</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="resourceType" value="assignment" class="text-blue-600">
+                                <span class="text-sm">Assignment</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="resourceType" value="reading" class="text-blue-600">
+                                <span class="text-sm">Reading Material</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Existing Resources -->
+                    <div>
+                        <h4 class="text-md font-medium text-gray-900 mb-4">Existing Resources (8)</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-file-pdf text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Algebra Fundamentals - Chapter 1.pdf</p>
+                                        <p class="text-xs text-gray-500">Notes • Uploaded 2 days ago • 2.3 MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700 text-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-file-word text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Assignment 1 - Linear Equations.docx</p>
+                                        <p class="text-xs text-gray-500">Assignment • Uploaded 5 days ago • 856 KB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700 text-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-file-powerpoint text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Quadratic Functions Presentation.pptx</p>
+                                        <p class="text-xs text-gray-500">Reading Material • Uploaded 1 week ago • 4.2 MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-700 text-sm">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700 text-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex justify-end pt-4 border-t border-gray-200">
+                    <button onclick="closeResourceManager()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 mr-2">Close</button>
+                    <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Upload Selected</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openStudentManagement(subjectName) {
+            document.getElementById('subjectNameStudents').textContent = subjectName;
+            document.getElementById('studentManagementModal').classList.remove('hidden');
+        }
+
+        function closeStudentManagement() {
+            document.getElementById('studentManagementModal').classList.add('hidden');
+        }
+
+        function openResourceManager(subjectName) {
+            document.getElementById('subjectNameResources').textContent = subjectName;
+            document.getElementById('resourceManagerModal').classList.remove('hidden');
+        }
+
+        function closeResourceManager() {
+            document.getElementById('resourceManagerModal').classList.add('hidden');
+        }
+
+        // Close modals when clicking outside
+        document.getElementById('studentManagementModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStudentManagement();
+            }
+        });
+
+        document.getElementById('resourceManagerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeResourceManager();
+            }
+        });
+    </script>
+
+
+{% endblock %}

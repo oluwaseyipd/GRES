@@ -1,0 +1,381 @@
+{% extends "theme/dashboard_layout.html" %}
+{% load static %}
+
+{% block title %}GRES | Profile{% endblock %}
+
+{% block content %}
+
+   <div class="bg-gradient-to-r from-blue-500 to-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-white">Manage Students</h1>
+                    <p class="text-blue-100 mt-2">View and manage your student roster</p>
+                </div>
+                <div class="flex items-center text-white">
+                    <i class="fas fa-users text-2xl mr-3"></i>
+                    <div class="text-right">
+                        <p class="text-sm text-blue-100">Total Students</p>
+                        <p class="text-2xl font-bold">124</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Search and Filter Section -->
+        <div class="bg-white shadow-sm rounded-lg mb-6">
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+                    <!-- Search Bar -->
+                    <div class="flex-1 max-w-lg">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" placeholder="Search by name or student ID..." 
+                                   class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Filters and Actions -->
+                    <div class="flex items-center space-x-4">
+                        <!-- Class Filter -->
+                        <select class="border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">All Classes</option>
+                            <option value="10A">Class 10A</option>
+                            <option value="10B">Class 10B</option>
+                            <option value="11A">Class 11A</option>
+                            <option value="11B">Class 11B</option>
+                            <option value="12A">Class 12A</option>
+                        </select>
+
+                        <!-- Gender Filter -->
+                        <select class="border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <!-- Export Button -->
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center space-x-2 transition-colors">
+                            <i class="fas fa-download"></i>
+                            <span>Export CSV</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Table -->
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Student List</h3>
+            </div>
+            
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Class</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40x40/3B82F6/FFFFFF?text=AS" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Alice Smith</div>
+                                        <div class="text-sm text-gray-500">ID: STU001</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">10A</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Female</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">16</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="openStudentModal('Alice Smith')" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40x40/10B981/FFFFFF?text=BJ" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Bob Johnson</div>
+                                        <div class="text-sm text-gray-500">ID: STU002</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">10A</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Male</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">17</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="openStudentModal('Bob Johnson')" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40x40/F59E0B/FFFFFF?text=CW" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Carol White</div>
+                                        <div class="text-sm text-gray-500">ID: STU003</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">10B</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Female</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">16</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="openStudentModal('Carol White')" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40x40/8B5CF6/FFFFFF?text=DM" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">David Miller</div>
+                                        <div class="text-sm text-gray-500">ID: STU004</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">11A</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Male</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">17</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Pending</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="openStudentModal('David Miller')" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40x40/EF4444/FFFFFF?text=ED" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Emma Davis</div>
+                                        <div class="text-sm text-gray-500">ID: STU005</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">11A</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Female</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">18</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="openStudentModal('Emma Davis')" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</a>
+                    <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</a>
+                </div>
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-gray-700">Showing <span class="font-medium">1</span> to <span class="font-medium">5</span> of <span class="font-medium">124</span> results</p>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            <a href="#" class="bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
+                            <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+                            <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Profile Modal -->
+    <div id="studentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Student Profile</h3>
+                    <button onclick="closeStudentModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="py-6">
+                    <div class="flex items-center mb-6">
+                        <img class="h-20 w-20 rounded-full" src="https://via.placeholder.com/80x80/3B82F6/FFFFFF?text=AS" alt="Student Photo">
+                        <div class="ml-6">
+                            <h4 class="text-xl font-semibold text-gray-900" id="modalStudentName">Alice Smith</h4>
+                            <p class="text-gray-600">Student ID: STU001</p>
+                            <p class="text-gray-600">Class: 10A</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Personal Information</h5>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Full Name:</span>
+                                    <span class="font-medium">Alice Smith</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Gender:</span>
+                                    <span class="font-medium">Female</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Age:</span>
+                                    <span class="font-medium">16 years</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Date of Birth:</span>
+                                    <span class="font-medium">March 15, 2008</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Phone:</span>
+                                    <span class="font-medium">+234-xxx-xxx-xxxx</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Academic Information</h5>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Current Class:</span>
+                                    <span class="font-medium">10A</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Admission Date:</span>
+                                    <span class="font-medium">Sept 2023</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Status:</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Subjects:</span>
+                                    <span class="font-medium">6 subjects</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Results -->
+                    <div class="mt-6">
+                        <h5 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Recent Results</h5>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <p class="text-xs text-gray-500">Mathematics</p>
+                                    <p class="text-lg font-semibold text-blue-600">85%</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xs text-gray-500">Physics</p>
+                                    <p class="text-lg font-semibold text-green-600">92%</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xs text-gray-500">Chemistry</p>
+                                    <p class="text-lg font-semibold text-orange-600">78%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex justify-end pt-4 border-t border-gray-200">
+                    <button onclick="closeStudentModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 mr-2">Close</button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">View Full Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openStudentModal(studentName) {
+            document.getElementById('modalStudentName').textContent = studentName;
+            document.getElementById('studentModal').classList.remove('hidden');
+        }
+
+        function closeStudentModal() {
+            document.getElementById('studentModal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('studentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStudentModal();
+            }
+        });
+    </script>
+
+
+{% endblock %}
