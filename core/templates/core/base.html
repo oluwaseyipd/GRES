@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet" />
+    <title>
+      {% block title %}GRES - Simplyfying Academic Evaluation{% endblock %}
+    </title>
+  </head>
+  <body>
+    {% if messages %}
+      <div class="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-3 items-center w-full pointer-events-none">
+        {% for message in messages %}
+          <div class="max-w-md w-full bg-green-500 text-white text-base shadow-lg rounded-xl px-6 py-3 text-center font-medium animate-fade-in pointer-events-auto">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% block content %} {% endblock %}
+    <script src="{% static 'core/js/main.js' %}"></script>
+  </body>
+</html>
